@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+DESCRIPTION:
+
+You challenge is to create a responsive flip card. 
+The user should be able to hover or click on the card 
+and it needs to flip on the other side to reveal what's on the back. 
+
+Remember: the card needs to be responsive - as I change the size of my window, 
+the card needs to adjust to the new size and look natural. 
+
+transform-style, transform, transition, 
+perspective, pseudo-classes, cursor, 
+min- max- prefixes, ems and rems, 
+*/
+
+/* Write your code here 👇 */
+
+.container {
+  height: 100vh;
+  background: url(./111858.jpg);
+  display: flex;
+  font-family: "Fredoka One", cursive;
+  animation: move-bg 20s linear infinite alternate forwards;
+  .card {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 50vw;
+    height: 50%;
+    min-width: 300px;
+    max-width: 600px;
+    perspective: 2500px;
+    transform-style: preserve-3d;
+
+    .front,
+    .back {
+      height: 100%;
+      transition: transform 1s ease;
+      width: 100%;
+      position: absolute;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .front {
+      background: rgb(2, 0, 36);
+      background-image: url(./359Absol.webp),
+        linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      //position: relative;
+
+      .absol {
+        display: block;
+        position: absolute;
+        bottom: 25px;
+        left: 25px;
+        font-size: x-large;
+        color: #fff;
+      }
+    }
+
+    .back {
+      background-color: yellow;
+      backface-visibility: hidden;
+      background: #000000; /* fallback for old browsers */
+      background-image: url(./359Absol-Mega.webp),
+        linear-gradient(to top, #434343, #000000); /* Chrome 10-25, Safari 5.1-6 */
+
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+
+      .mega-absol {
+        display: block;
+        position: absolute;
+        bottom: 25px;
+        right: 25px;
+        font-size: x-large;
+        color: #fff;
+      }
+    }
+
+    .back {
+      transform: rotateY(180deg);
+      opacity: 1;
+    }
+
+    &:hover {
+      .front {
+        transform: rotateY(-180deg);
+        opacity: 1;
+        backface-visibility: hidden;
+      }
+
+      .back {
+        transform: rotateY(0);
+      }
+    }
+  }
+}
+
+@keyframes move-bg {
+  from {
+    background-position: 0 0;
+    background-position: -400 0;
+  }
+}
+/*
+
+DETAILED INSTRUCTIONS
+1. Choose the required pseudo-class
+2. Figure out how to flip a card on the required event
+3. Make it responsive!
+
+*/
