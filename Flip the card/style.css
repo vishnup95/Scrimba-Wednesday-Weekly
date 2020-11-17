@@ -1,31 +1,15 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
 html,
 body {
   margin: 0;
   padding: 0;
 }
 
-/*
-DESCRIPTION:
-
-You challenge is to create a responsive flip card. 
-The user should be able to hover or click on the card 
-and it needs to flip on the other side to reveal what's on the back. 
-
-Remember: the card needs to be responsive - as I change the size of my window, 
-the card needs to adjust to the new size and look natural. 
-
-transform-style, transform, transition, 
-perspective, pseudo-classes, cursor, 
-min- max- prefixes, ems and rems, 
-*/
-/* Write your code here 👇 */
 .container {
   height: 100vh;
   background: url(./111858.jpg);
   display: flex;
-  font-family: "Fredoka One", cursive;
+  font-family: "Bubblegum Sans", cursive;
   animation: move-bg 20s linear infinite alternate forwards;
 }
 .container .card {
@@ -34,9 +18,9 @@ min- max- prefixes, ems and rems,
   flex-direction: column;
   position: relative;
   width: 50vw;
-  height: 50%;
+  height: 80%;
   min-width: 300px;
-  max-width: 600px;
+  max-width: 500px;
   perspective: 2500px;
   transform-style: preserve-3d;
 }
@@ -48,44 +32,72 @@ min- max- prefixes, ems and rems,
   position: absolute;
   border-radius: 6px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.container .card .front,
+.container .card .back {
+  background: #1e1e1e;
+}
+.container .card .front .absol-bg,
+.container .card .front .mega-absol-bg,
+.container .card .back .absol-bg,
+.container .card .back .mega-absol-bg {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 65%;
+  width: 100%;
+}
+.container .card .front .absol-bg img,
+.container .card .front .mega-absol-bg img,
+.container .card .back .absol-bg img,
+.container .card .back .mega-absol-bg img {
+  width: inherit;
+}
+.container .card .front .absol-details,
+.container .card .front .mega-absol-details,
+.container .card .back .absol-details,
+.container .card .back .mega-absol-details {
+  height: 35%;
+  width: 100%;
+  text-align: center;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
-.container .card .front {
-  background: #020024;
-  background-image: url(./359Absol.webp), linear-gradient(to right, #0f2027, #203a43, #2c5364);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+.container .card .front .absol-details ul,
+.container .card .front .mega-absol-details ul,
+.container .card .back .absol-details ul,
+.container .card .back .mega-absol-details ul {
+  text-align: center;
 }
-.container .card .front .absol {
+.container .card .front .absol-details .absol,
+.container .card .front .absol-details .absol-mega,
+.container .card .front .absol-details .ability,
+.container .card .front .absol-details .type,
+.container .card .front .mega-absol-details .absol,
+.container .card .front .mega-absol-details .absol-mega,
+.container .card .front .mega-absol-details .ability,
+.container .card .front .mega-absol-details .type,
+.container .card .back .absol-details .absol,
+.container .card .back .absol-details .absol-mega,
+.container .card .back .absol-details .ability,
+.container .card .back .absol-details .type,
+.container .card .back .mega-absol-details .absol,
+.container .card .back .mega-absol-details .absol-mega,
+.container .card .back .mega-absol-details .ability,
+.container .card .back .mega-absol-details .type {
   display: block;
-  position: absolute;
-  bottom: 25px;
-  left: 25px;
-  font-size: x-large;
-  color: #fff;
+  font-size: 35px;
+  color: #ececec;
+  padding: 5px;
+  text-align: inherit;
 }
 .container .card .back {
-  background-color: yellow;
+  background: #1a1a1a;
   backface-visibility: hidden;
-  background: #000000;
-  /* fallback for old browsers */
-  background-image: url(./359Absol-Mega.webp), linear-gradient(to top, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-.container .card .back .mega-absol {
-  display: block;
-  position: absolute;
-  bottom: 25px;
-  right: 25px;
-  font-size: x-large;
-  color: #fff;
-}
-.container .card .back {
   transform: rotateY(180deg);
   opacity: 1;
 }
@@ -104,13 +116,5 @@ min- max- prefixes, ems and rems,
     background-position: -400 0;
   }
 }
-/*
-
-DETAILED INSTRUCTIONS
-1. Choose the required pseudo-class
-2. Figure out how to flip a card on the required event
-3. Make it responsive!
-
-*/
 
 /*# sourceMappingURL=style.css.map */
