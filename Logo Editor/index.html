@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logo Editor</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <h2 class="logo-editor-heading">Logo Editor</h2>
+    <input
+      type="text"
+      name="logo-name"
+      id="logo-name-input"
+      placeholder="Type your logo name!"
+      maxlength="16"
+    />
+
+    <div class="logo">
+      <h1 id="text">Leep App</h1>
+    </div>
+    <div class="button-container">
+      <button id="button-one"></button>
+      <button id="button-two"></button>
+      <button id="button-three"></button>
+    </div>
+    <button id="download-as-html">Save Logo</button>
+    <script src="./script.js"></script>
+  </body>
+</html>
