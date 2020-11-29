@@ -1,0 +1,85 @@
+/*
+DESCRIPTION:
+Your job is to style the the individual items so that they look like content cards,
+just like what we have in the slides. Each item has a title and a description.
+
+You should use CSS grid for the layout:
+
+- On mobile phones, one column per row
+- On tablet, two columns per row
+- On desktop, three columns per row
+
+Use media queries to make the page responsive.
+For the page width:
+
+- From 0 to 480px should be for mobile
+- Between 480px and 1025px should be for tablets
+- Above 1025px should be for desktop
+
+Feel free to choose your own colors and you can even go ahead to make your cards
+look completely different. Just follow the layout!
+*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.heading {
+  position: relative;
+  font-size: 3.5rem;
+  text-align: center;
+  color: #35e00d;
+}
+.heading:after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 4px;
+  bottom: -10px;
+  background-color: #c7f0bd;
+}
+
+.container {
+  max-width: 1850px;
+  margin: 0 auto;
+}
+.container .row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-content: center;
+  gap: 1.5rem;
+  margin: 0 2rem;
+}
+@media (min-width: 480px) and (max-width: 1025px) {
+  .container .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .container .row {
+    grid-template-columns: 1fr;
+  }
+}
+.container .row .item {
+  border: 2px solid #ffbf81;
+  padding: 1rem;
+  border-radius: 4px;
+  transition: transform ease 0.5s;
+  background-color: #ffbf81;
+}
+.container .row .item:hover {
+  transform: scale(1.05);
+}
+.container .row .item .title {
+  font-size: 1.5rem;
+}
+.container .row .item .description {
+  font-size: 1rem;
+}
+
+/*# sourceMappingURL=style.css.map */

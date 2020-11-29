@@ -1,0 +1,105 @@
+/*
+DESCRIPTION:
+Your job is to style the the individual items so that they look like content cards,
+just like what we have in the slides. Each item has a title and a description.
+
+You should use CSS grid for the layout:
+
+- On mobile phones, one column per row
+- On tablet, two columns per row
+- On desktop, three columns per row
+
+Use media queries to make the page responsive.
+For the page width:
+
+- From 0 to 480px should be for mobile
+- Between 480px and 1025px should be for tablets
+- Above 1025px should be for desktop
+
+Feel free to choose your own colors and you can even go ahead to make your cards
+look completely different. Just follow the layout!
+*/
+
+$headingColor: #35e00d;
+$underlineColor: #c7f0bd;
+$mellowApricot: #ffbf81;
+$mobileDevice: 480px;
+$tabletDevice: 1025px;
+$maxContainerWidth: 1850px;
+
+// Mixin for mobile Device.
+@mixin mobile-devices {
+  @media (max-width: $mobileDevice) {
+    @content;
+  }
+}
+
+@mixin tablet-devices {
+  @media (min-width: $mobileDevice) and (max-width: $tabletDevice) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.heading {
+  position: relative;
+  font-size: 3.5rem;
+  text-align: center;
+  color: $headingColor;
+  &:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 4px;
+    bottom: -10px;
+    background-color: $underlineColor;
+  }
+}
+
+.container {
+  max-width: $maxContainerWidth;
+  margin: 0 auto;
+  .row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-content: center;
+    gap: 1.5rem;
+    margin: 0 2rem;
+
+    @include tablet-devices() {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile-devices() {
+      grid-template-columns: 1fr;
+    }
+
+    .item {
+      border: 2px solid $mellowApricot;
+      padding: 1rem;
+      border-radius: 4px;
+      transition: transform ease 0.5s;
+      background-color: $mellowApricot;
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .description {
+        font-size: 1rem;
+      }
+    }
+  }
+}
