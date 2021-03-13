@@ -4,7 +4,12 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="style.css" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Dosis:wght@600&display=swap"
+			rel="stylesheet"
+		/>
 		<title>Currency Converter!</title>
 	</head>
 	<body>
@@ -16,27 +21,28 @@
 					type="number"
 					id="original-currency-amount"
 					placeholder="1"
+					value="1"
 				/>
-				<input
-					type="text"
+				<select
+					name="Select Currency"
 					id="original-currency-unit"
-					placeholder="original currency"
-				/>
+				></select>
 				to
-				<input
-					type="text"
-					id="new-currency-unit"
-					placeholder="new currency"
-				/>
+				<select name="Select Currency" id="new-currency-unit"></select>
 			</p>
 			<p>
 				Exchange Rate:
-				<input type="number" id="exchange-rate" />
+				<input
+					type="number"
+					id="exchange-rate"
+					disabled
+					placeholder="Will be filled"
+				/>
 			</p>
 			<button id="exchange-btn">Exchange my money now!</button>
 			<p id="output-text">Converted 💰 will appear here.</p>
 		</div>
 
-		<script src="script.js"></script>
+		<script src="script.js" type="module"></script>
 	</body>
 </html>
