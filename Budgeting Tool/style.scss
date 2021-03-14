@@ -1,0 +1,43 @@
+$background-color: #d7dbff;
+$container-bg: #f1f2f6;
+$font-family: 'Oxygen', sans-serif;
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	background: $background-color;
+	opacity: 0.65;
+	height: 100vh;
+	overflow: auto;
+	font-family: $font-family;
+
+	.app-container {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	.budget-container {
+		background: $container-bg;
+		padding: 10px 0 25px 0;
+		margin: auto 0;
+		width: 100%;
+		text-align: center;
+	}
+
+	input {
+		padding: 10px 5px;
+		font-size: 18px;
+		font-family: $font-family;
+	}
+
+	.btn {
+		display: block;
+        cursor: pointer;
+        margin: 10px auto;
+        font-family: $font-family;
+        font-weight: 600;
+        padding: 10px 5px;
+        border-radius: 3px;
+        border: 1px solid slategrey;
+	}
+}
