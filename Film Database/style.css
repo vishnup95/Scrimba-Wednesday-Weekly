@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: lemonchiffon;
+  background-color: #fff;
   text-align: center;
   color: grey;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
@@ -18,8 +18,9 @@ body {
 .movie-tiles .card {
   perspective: 1000px;
   width: 300px;
-  height: 520px;
-  padding-bottom: 15px;
+  height: 505px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 .movie-tiles .card:hover .movie-tile {
   transform: rotateY(180deg);
@@ -35,28 +36,28 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #2dc7ff8c;
-  height: inherit;
+  background-color: #d7e3fc;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  border-radius: 5px;
 }
 .movie-tiles .card .movie-tile .movie-tile-front .movie-title {
-  font-size: 24px;
-  font-weight: bolder;
-  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
 }
 .movie-tiles .card .movie-tile .movie-tile-front .poster {
-  max-height: 450px;
+  max-height: 440px;
+  border-radius: 5px 5px 0 0;
 }
 .movie-tiles .card .movie-tile .movie-tile-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  padding: 0 10px;
-  background-color: #2dc7ff8c;
+  background-color: #d7e3fc;
   height: inherit;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -64,7 +65,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: black;
+  color: #bcb8b1;
 }
 .movie-tiles .card .movie-tile .movie-tile-back .plot-text {
   font-size: 24px;
