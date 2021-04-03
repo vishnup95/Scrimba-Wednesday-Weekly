@@ -34,6 +34,11 @@ body {
 	border-radius: 5px;
 	border-style: none;
 	cursor: pointer;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 }
 
 .food-image {

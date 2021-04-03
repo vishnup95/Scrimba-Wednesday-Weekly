@@ -31,6 +31,10 @@ body {
   border-style: none;
   cursor: pointer;
 }
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 .food-image {
   display: block;

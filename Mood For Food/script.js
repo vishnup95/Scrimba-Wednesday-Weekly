@@ -6,11 +6,12 @@ const app = document.querySelector('#app');
 async function getRandomFood() {
 	const res = await fetch(API_URI);
 	const foodRes = await res.json();
-	//console.log(foodRes);
 	return foodRes;
 }
 
 async function chooseFoodItem() {
+	helpMeChooseBtn.disabled = true;
+	// I don't like this. Any improvments?
 	if (
 		document.querySelector('.food-image') &&
 		document.querySelector('.food-image').src
@@ -18,7 +19,10 @@ async function chooseFoodItem() {
 		document.querySelector('.food-image').remove();
 		document.querySelector('.food-name').remove();
 	}
-	const { image: randomFoodImage } = await getRandomFood();
+	const { image: randomFoodImage } = await getRandomFood().catch(err => {
+		// TODO: Handle Error Better!
+		console.error(err);
+	});
 	let foodImg = new Image();
 	let foodNameEle = document.createElement('p');
 	const foodName = randomFoodImage.split('/images/')[1].split('/')[0];
@@ -30,6 +34,7 @@ async function chooseFoodItem() {
 	foodImg.onload = function () {
 		foodNameEle.innerHTML = foodName + '🍽';
 		foodImg.after(foodNameEle);
+		helpMeChooseBtn.disabled = false;
 	};
 
 	app.insertAdjacentElement('beforeend', foodImg);
