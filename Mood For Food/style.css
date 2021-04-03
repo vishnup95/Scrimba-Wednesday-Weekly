@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
+body {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+#app {
+  text-align: center;
+}
+
+.text {
+  font-size: 40px;
+  padding: 1rem 1.5rem;
+  font-family: "Oxygen", sans-serif;
+  width: 50%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 480px) {
+  .text {
+    width: 90%;
+  }
+}
+
+.btn {
+  font-family: "Oxygen", sans-serif;
+  padding: 0.5rem 1rem;
+  font-size: 20px;
+  color: #0096c7;
+  background-color: #f2ff49;
+  border-radius: 5px;
+  border-style: none;
+  cursor: pointer;
+}
+
+.food-image {
+  display: block;
+  max-height: 30rem;
+  border-radius: 5px;
+  margin: 2rem auto;
+}
+
+.food-name {
+  font-size: 35px;
+  color: #0096c7;
+  text-transform: capitalize;
+}
