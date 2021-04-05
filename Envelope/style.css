@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #f2f7f5;
+  height: 100vh;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app .container {
+  perspective: 300px;
+}
+.app .container .envelope {
+  position: relative;
+  width: 300px;
+  height: 180px;
+  cursor: pointer;
+  background-color: #faae2b;
+}
+.app .container .envelope::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 115px solid #cf942d;
+  transform-origin: top;
+  transition: all 0.5s ease 1s;
+  z-index: 1;
+}
+.app .container .envelope:hover::before {
+  z-index: 0;
+  transition: all 0.5s ease-in;
+  transform: rotateX(180deg);
+}
+.app .container .envelope:hover ~ .letter {
+  z-index: 1;
+  transition: all 0.5s linear 0.75s;
+  transform: translateY(-220px) scale(1.1);
+}
+.app .container .envelope::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 25;
+  background-image: linear-gradient(30deg, #da9a2c 50%, #e7a42ffa 50%), linear-gradient(150deg, #e7a42ffa 50%, #da9a2c 50%), linear-gradient(212deg, transparent 50%, #e7a42ffa 50%), linear-gradient(329deg, #e7a42ffa 50%, transparent 50%);
+  background-repeat: no-repeat;
+  background-position: bottom right, bottom left, top left, top right;
+  background-size: 150px 90px;
+}
+.app .container .letter {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  width: 90%;
+  height: 85%;
+  background-color: #d8d7e5;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app .container .letter .text {
+  font-family: "Pacifico", cursive;
+  font-size: 30px;
+  color: #f2f7f5;
+}
+.app a {
+  position: fixed;
+  bottom: 20px;
+}

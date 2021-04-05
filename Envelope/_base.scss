@@ -1,0 +1,24 @@
+$background-color: #f2f7f5;
+$envelope-color: #faae2b;
+$envelope-alt-color: #e7a42ffa;
+$envelope-alt-color2: #cf942d;
+$envelope-alt-color3: #da9a2c;
+$envelope-alt-color4: #e0a134d1;
+$letter-color: #d8d7e5;
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	background-color: $background-color;
+	height: 100vh;
+}
+
+@mixin center-at-all-cost {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+$font-letter: 'Pacifico', cursive;
