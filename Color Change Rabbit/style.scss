@@ -22,7 +22,8 @@ body {
 		border-radius: 50% 80%;
 		transform: rotate(315deg);
 		transform-style: preserve-3d;
-		box-shadow:  0px 7px base.$shade-of-pink;
+		box-shadow: 0px 7px base.$shade-of-pink;
+		cursor: pointer;
 
 		.unrotated {
 			position: relative;
@@ -88,7 +89,7 @@ body {
 			transform: rotate(350deg);
 			border-radius: 50% 55% 60% 50%;
 			.pupil {
-				margin-left: 15px;
+				margin-left: 10px;
 			}
 		}
 
@@ -97,6 +98,9 @@ body {
 			top: 60px;
 			transform: rotate(10deg);
 			border-radius: 50% 50% 55% 60%;
+			.pupil {
+				margin-left: 10px;
+			}
 		}
 
 		.nose {
@@ -106,17 +110,111 @@ body {
 			background-color: base.$pure-black;
 			border-radius: 90% 40% 50% 40%;
 			left: 50%;
-			top: 48%;
+			top: 55%;
 			transform: translate(-50%, -50%) rotate(45deg);
 			box-shadow: 4px 4px 1px rgb(68 68 68 / 20%);
-			// &::before {
-			// 	content: "";
-			// 	position: absolute;
-			// 	width: 2px;
-			// 	height: 20px;
-			// 	background-color: base.$shade-of-pink;
-			// 	transform: rotate(-45deg);
-			// }
 		}
+
+		.mouth {
+			position: absolute;
+			//background-color: base.$eye-border;
+			top: 70%;
+			left: 50%;
+			width: 3.5rem;
+			height: 1.5rem;
+			transform: translate(-50%, -50%);
+
+			.white-blocker {
+				background-color: base.$pure-white;
+				max-height: 15px;
+				z-index: 5;
+			}
+
+			.tongue {
+				z-index: -1;
+				position: absolute;
+				top: 80%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 30px;
+				height: 20px;
+				border-top: transparent;
+				border: 1px solid base.$light-black;
+				border-style:ridge;
+				border-top: 0;
+				border-bottom-left-radius: 50%;
+				border-bottom-right-radius: 50%;
+			}
+		}
+
+		&:hover {
+			.left-ear {
+				animation: ear-move-l 0.4s linear both;
+				animation-iteration-count: 2;
+			}
+
+			.right-ear {
+				animation: ear-move-r 0.4s linear both;
+				animation-iteration-count: 2;
+			}
+
+			.tongue {
+				//border: 25px;
+				animation: tongue-move 0.3s linear 2 alternate forwards;
+			}
+		}
+	}
+}
+
+@keyframes ear-move-l {
+	0% {
+		transform: translateZ(-1px) translateX(-2px) rotate(340deg);
+	}
+
+	25% {
+		transform: translateZ(-1px) translateX(-4px) rotate(335deg);
+	}
+
+	50% {
+		transform: translateZ(-1px) translateX(-2px) rotate(340deg);
+	}
+
+	75% {
+		transform: translateZ(-1px) translateX(-4px) rotate(335deg);
+	}
+
+	100% {
+		transform: translateZ(-1px) translateX(-2px) rotate(340deg);
+	}
+}
+
+@keyframes ear-move-r {
+	0% {
+		transform: translateZ(-1px) translateX(2px) rotate(20deg);
+	}
+
+	25% {
+		transform: translateZ(-1px) translateX(4px) rotate(25deg);
+	}
+
+	50% {
+		transform: translateZ(-1px) translateX(2px) rotate(20deg);
+	}
+
+	75% {
+		transform: translateZ(-1px) translateX(4px) rotate(25deg);
+	}
+
+	100% {
+		transform: translateZ(-1px) translateX(2px) rotate(20deg);
+	}
+}
+
+@keyframes tongue-move {
+	from {
+		top: 85%;
+	}
+	to {
+		top: 100%;
 	}
 }

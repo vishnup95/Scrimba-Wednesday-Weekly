@@ -25,6 +25,7 @@ body {
   transform: rotate(315deg);
   transform-style: preserve-3d;
   box-shadow: 0px 7px #ffc0cb;
+  cursor: pointer;
 }
 #rabbit .head .unrotated {
   position: relative;
@@ -80,13 +81,16 @@ body {
   border-radius: 50% 55% 60% 50%;
 }
 #rabbit .head .eye.left-eye .pupil {
-  margin-left: 15px;
+  margin-left: 10px;
 }
 #rabbit .head .eye.right-eye {
   right: 45px;
   top: 60px;
   transform: rotate(10deg);
   border-radius: 50% 50% 55% 60%;
+}
+#rabbit .head .eye.right-eye .pupil {
+  margin-left: 10px;
 }
 #rabbit .head .nose {
   position: absolute;
@@ -95,7 +99,89 @@ body {
   background-color: #000;
   border-radius: 90% 40% 50% 40%;
   left: 50%;
-  top: 48%;
+  top: 55%;
   transform: translate(-50%, -50%) rotate(45deg);
   box-shadow: 4px 4px 1px rgba(68, 68, 68, 0.2);
+}
+#rabbit .head .mouth {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  width: 3.5rem;
+  height: 1.5rem;
+  transform: translate(-50%, -50%);
+}
+#rabbit .head .mouth .white-blocker {
+  background-color: #ffffff;
+  max-height: 15px;
+  z-index: 5;
+}
+#rabbit .head .mouth .tongue {
+  z-index: -1;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 20px;
+  border-top: transparent;
+  border: 1px solid #00000087;
+  border-style: ridge;
+  border-top: 0;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+#rabbit .head:hover .left-ear {
+  animation: ear-move-l 0.4s linear both;
+  animation-iteration-count: 2;
+}
+#rabbit .head:hover .right-ear {
+  animation: ear-move-r 0.4s linear both;
+  animation-iteration-count: 2;
+}
+#rabbit .head:hover .tongue {
+  animation: tongue-move 0.3s linear 2 alternate forwards;
+}
+
+@keyframes ear-move-l {
+  0% {
+    transform: translateZ(-1px) translateX(-2px) rotate(340deg);
+  }
+  25% {
+    transform: translateZ(-1px) translateX(-4px) rotate(335deg);
+  }
+  50% {
+    transform: translateZ(-1px) translateX(-2px) rotate(340deg);
+  }
+  75% {
+    transform: translateZ(-1px) translateX(-4px) rotate(335deg);
+  }
+  100% {
+    transform: translateZ(-1px) translateX(-2px) rotate(340deg);
+  }
+}
+@keyframes ear-move-r {
+  0% {
+    transform: translateZ(-1px) translateX(2px) rotate(20deg);
+  }
+  25% {
+    transform: translateZ(-1px) translateX(4px) rotate(25deg);
+  }
+  50% {
+    transform: translateZ(-1px) translateX(2px) rotate(20deg);
+  }
+  75% {
+    transform: translateZ(-1px) translateX(4px) rotate(25deg);
+  }
+  100% {
+    transform: translateZ(-1px) translateX(2px) rotate(20deg);
+  }
+}
+@keyframes tongue-move {
+  from {
+    top: 85%;
+  }
+  to {
+    top: 100%;
+  }
 }
