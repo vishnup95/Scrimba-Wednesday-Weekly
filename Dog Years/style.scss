@@ -1,0 +1,95 @@
+// Variables..
+
+$color-background: #d4d8f0;
+$card-background: #fffffe;
+$button-bg: #eebbc3;
+$button-text: #121629;
+
+// Mixins..
+
+@mixin center-at-all-cost {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin padding(
+	$firstValue,
+	$secondValue: '',
+	$thirdValue: '',
+	$fourthValue: ''
+) {
+	@if $fourthValue != '' {
+		padding: $firstValue +
+			px
+			$secondValue +
+			px
+			$thirdValue +
+			px
+			$fourthValue +
+			px;
+	} @else if $thirdValue != '' {
+		padding: $firstValue + px $secondValue + px $thirdValue + px;
+	} @else if $secondValue != '' {
+		padding: $firstValue + px $secondValue + px;
+	} @else if $firstValue {
+		padding: $firstValue + px;
+	}
+}
+
+// properties
+
+@property --num {
+	syntax: '<integer>';
+	initial-value: 0;
+	inherits: false;
+}
+
+body {
+	background-color: $color-background;
+	//display: flex;
+	text-align: center;
+}
+
+.container {
+	width: auto;
+	max-width: 300px;
+	background-color: $card-background;
+	border-radius: 5px;
+	margin: 60px auto;
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+}
+
+.button {
+	background-color: $button-bg;
+	border-radius: 5px;
+	@include padding(10, 15);
+	align-self: center;
+	color: $button-text;
+	border-style: none;
+	cursor: pointer;
+	font-size: 1.1rem;
+}
+
+#input {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 30px;
+	border-radius: 5px;
+}
+
+#result {
+	color: $button-text;
+	font-size: 50px;
+	align-self: center;
+	transition: --num 3s;
+	// this is css syntax.
+	counter-reset: num var(--num);
+	&::after {
+		content: counter(num);
+	}
+
+	--num: var(--toNum);
+}

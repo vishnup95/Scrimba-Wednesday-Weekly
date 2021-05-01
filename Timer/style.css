@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+body {
+  background-color: #fffffe;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+main {
+  background-color: #faeee7;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin: 2.5rem 2rem;
+  font-family: "Bungee", cursive;
+}
+main .timer {
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  width: 50%;
+}
+main input:invalid {
+  border: red solid 3px;
+}
+main .btn {
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border-style: none;
+  width: max-content;
+  margin: 0 auto;
+  background-color: #ff8ba7;
+}
+main .timer-countdown {
+  font-family: "Bungee", cursive;
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  margin-top: 1rem;
+}
+main .timer-countdown p {
+  font-size: 4rem;
+  font-weight: 600;
+  margin: 0 1rem;
+}

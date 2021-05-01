@@ -1,0 +1,24 @@
+$lineargradient-color1: #8ec5fc;
+$lineargradient-color2: #e0c3fc;
+$rabbit-white: #ffe1e6;
+$shade-of-pink: #ffc0cb;
+$pure-white: #ffffff;
+$eye-border: rgba(167, 167, 167, 0.55);
+$pupil-color: #00000078;
+$pure-black: #000;
+
+// background-color: #8ec5fc;
+
+@mixin linearGradient(
+	$color1: $lineargradient-color1,
+	$color2: $lineargradient-color2
+) {
+	background-color: $color1;
+	background-image: linear-gradient(to bottom, $color1 0%, $color2 100%);
+}
+
+@mixin center-at-all-costs {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
