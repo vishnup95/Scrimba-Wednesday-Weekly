@@ -1,0 +1,65 @@
+@use '_base.scss' as base;
+
+@include base.cssvars(
+	(
+		number-of-emojis: 25px,
+	)
+);
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 2em;
+	background: #ffad33;
+}
+
+.container {
+	margin-top: 1em;
+}
+
+.emojis,
+.buttons {
+	height: 100px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.show-hide {
+	font-size: 1rem;
+	border-radius: 10px;
+	font-weight: 700;
+	padding: 10px 15px;
+	box-shadow: 3px 3px 10px -4px #000;
+	border: none;
+	cursor: pointer;
+}
+
+.emoji-container {
+	height: base.getvars(number-of-emojis);
+	min-width: 1em;
+	transform: translateX(-2000px);
+	transition: transform 1s ease;
+
+	&.right-extreme-3 {
+		transform: translateX(100%);
+	}
+
+	&.right-extreme-2 {
+		transform: translateX(75%);
+	}
+
+	&.right-extreme-1 {
+		transform: translateX(50%);
+	}
+
+	&.right-extreme-0 {
+		transform: translateX(25%);
+	}
+
+}
+
+#emojis {
+	display: none;
+}

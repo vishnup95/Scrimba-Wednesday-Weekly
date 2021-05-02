@@ -1,0 +1,95 @@
+/**
+ * Use this mixin to declare a set of CSS Custom Properties.
+ * The variables in $css_variables will be properly prefixed.
+ * The use of this mixin is encoraged to keep a good scalability.
+ *
+ * Usage:
+ *
+ * @include cssvars((
+ *  base-font-size: 65.5%,
+ *  font-family: HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif,
+ * 
+ *  primary-color: #33b5e5,
+ *  secondary-color: #ff500a,
+ * ));
+ *
+ * Will result in
+ *
+ * root {
+ *    --prefix-var-name: value;
+ *    --prefix-var-name: value;
+ *    --prefix-var-name: value;
+ * }
+ *
+ */
+/**
+ * Retrieve a css variable value with prefix
+ *
+ * Usage
+ *
+ * .selector {
+ *   color: getvars(primary-color);
+ * }
+ *
+ * Will result in
+ *
+ * .selector {
+ *    color: var(--prefix-primary-color);
+ * }
+ */
+:root {
+  --pf-number-of-emojis: 25px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  background: #ffad33;
+}
+
+.container {
+  margin-top: 1em;
+}
+
+.emojis,
+.buttons {
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.show-hide {
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 10px 15px;
+  box-shadow: 3px 3px 10px -4px #000;
+  border: none;
+  cursor: pointer;
+}
+
+.emoji-container {
+  height: var(--pf-number-of-emojis);
+  min-width: 1em;
+  transform: translateX(-2000px);
+  transition: transform 1s ease;
+}
+.emoji-container.right-extreme-3 {
+  transform: translateX(100%);
+}
+.emoji-container.right-extreme-2 {
+  transform: translateX(75%);
+}
+.emoji-container.right-extreme-1 {
+  transform: translateX(50%);
+}
+.emoji-container.right-extreme-0 {
+  transform: translateX(25%);
+}
+
+#emojis {
+  display: none;
+}

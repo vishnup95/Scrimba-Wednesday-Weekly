@@ -1,0 +1,52 @@
+/**
+ * Use this mixin to declare a set of CSS Custom Properties.
+ * The variables in $css_variables will be properly prefixed.
+ * The use of this mixin is encoraged to keep a good scalability.
+ *
+ * Usage:
+ *
+ * @include cssvars((
+ *  base-font-size: 65.5%,
+ *  font-family: #{"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif},
+ * 
+ *  primary-color: #33b5e5,
+ *  secondary-color: #ff500a,
+ * ));
+ *
+ * Will result in
+ *
+ * root {
+ *    --prefix-var-name: value;
+ *    --prefix-var-name: value;
+ *    --prefix-var-name: value;
+ * }
+ *
+ */
+
+@mixin cssvars($css_variables, $prefix: pf, $selector: ':root') {
+	#{$selector} {
+		@each $name, $value in $css_variables {
+			--#{$prefix}-#{$name}: #{$value};
+		}
+	}
+}
+
+/**
+ * Retrieve a css variable value with prefix
+ *
+ * Usage
+ *
+ * .selector {
+ *   color: getvars(primary-color);
+ * }
+ *
+ * Will result in
+ *
+ * .selector {
+ *    color: var(--prefix-primary-color);
+ * }
+ */
+
+@function getvars($var-name, $prefix: pf) {
+	@return var(--#{$prefix}-#{$var-name});
+}
