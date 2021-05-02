@@ -61,18 +61,41 @@ body {
 }
 #rabbit .head .eye {
   position: absolute;
-  width: 2.5rem;
-  height: 3rem;
-  background-color: #000;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: #e4e4e4;
   border: 0.5px solid rgba(167, 167, 167, 0.55);
 }
 #rabbit .head .eye .pupil {
-  width: 40%;
-  height: 40%;
-  background-color: #ffffff;
+  width: 85%;
+  height: 80%;
+  background-color: #000;
   border-radius: 50%;
-  margin-top: 20px;
+  margin-top: 6px;
   margin-left: 4px;
+}
+#rabbit .head .eye .new-eye {
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 30%;
+  height: 25%;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-top: -43px;
+  margin-left: 5px;
+}
+#rabbit .head .eye .grey-arc {
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 40px;
+  height: 20px;
+  border: 15px solid #fffdfd59;
+  margin-top: 15px;
+  margin-left: 10px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom: none;
+  border-right: none;
 }
 #rabbit .head .eye.left-eye {
   left: 50px;
@@ -81,7 +104,7 @@ body {
   border-radius: 50% 55% 60% 50%;
 }
 #rabbit .head .eye.left-eye .pupil {
-  margin-left: 10px;
+  margin-left: 3px;
 }
 #rabbit .head .eye.right-eye {
   right: 45px;
@@ -90,7 +113,7 @@ body {
   border-radius: 50% 50% 55% 60%;
 }
 #rabbit .head .eye.right-eye .pupil {
-  margin-left: 10px;
+  margin-left: 4px;
 }
 #rabbit .head .nose {
   position: absolute;
@@ -107,7 +130,7 @@ body {
   position: absolute;
   top: 70%;
   left: 50%;
-  width: 3.5rem;
+  width: 4.5rem;
   height: 1.5rem;
   transform: translate(-50%, -50%);
 }
@@ -119,7 +142,7 @@ body {
 #rabbit .head .mouth .tongue {
   z-index: -1;
   position: absolute;
-  top: 80%;
+  top: 110%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30px;

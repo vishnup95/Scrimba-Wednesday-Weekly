@@ -64,22 +64,47 @@ body {
 
 		.eye {
 			position: absolute;
-			width: 2.5rem;
-			height: 3rem;
+			width: 3.5rem;
+			height: 3.5rem;
 
-			background-color: base.$pure-black;
+			background-color: base.$eye-bordered;
 			//left: 50%;
 			//top: 35%;
 			//transform: translate(-50%, -35%);
 			border: 0.5px solid base.$eye-border;
 
 			.pupil {
-				width: 40%;
-				height: 40%;
-				background-color: base.$pure-white;
+				width: 85%;
+				height: 80%;
+				background-color: #000;
 				border-radius: 50%;
-				margin-top: 20px;
+				margin-top: 6px;
 				margin-left: 4px;
+			}
+
+			.new-eye {
+				cursor: pointer;
+				box-sizing: border-box;
+				width: 30%;
+				height: 25%;
+				background-color: #fff;
+				border-radius: 50%;
+				margin-top: -43px;
+				margin-left: 5px;
+			}
+
+			.grey-arc {
+				cursor: pointer;
+				box-sizing: border-box;
+				width: 40px;
+				height: 20px;
+				border: 15px solid #fffdfd59;
+				margin-top: 15px;
+				margin-left: 10px;
+				border-top-left-radius: 50%;
+				border-top-right-radius: 50%;
+				border-bottom: none;
+				border-right: none;
 			}
 		}
 
@@ -89,7 +114,7 @@ body {
 			transform: rotate(350deg);
 			border-radius: 50% 55% 60% 50%;
 			.pupil {
-				margin-left: 10px;
+				margin-left: 3px;
 			}
 		}
 
@@ -99,7 +124,7 @@ body {
 			transform: rotate(10deg);
 			border-radius: 50% 50% 55% 60%;
 			.pupil {
-				margin-left: 10px;
+				margin-left: 4px;
 			}
 		}
 
@@ -120,7 +145,7 @@ body {
 			//background-color: base.$eye-border;
 			top: 70%;
 			left: 50%;
-			width: 3.5rem;
+			width: 4.5rem;
 			height: 1.5rem;
 			transform: translate(-50%, -50%);
 
@@ -133,14 +158,14 @@ body {
 			.tongue {
 				z-index: -1;
 				position: absolute;
-				top: 80%;
+				top: 110%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 				width: 30px;
 				height: 20px;
 				border-top: transparent;
 				border: 1px solid base.$light-black;
-				border-style:ridge;
+				border-style: ridge;
 				border-top: 0;
 				border-bottom-left-radius: 50%;
 				border-bottom-right-radius: 50%;
