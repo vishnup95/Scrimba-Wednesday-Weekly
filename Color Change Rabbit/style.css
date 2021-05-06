@@ -136,7 +136,7 @@ body {
 }
 #rabbit .head .mouth .white-blocker {
   background-color: #ffffff;
-  max-height: 15px;
+  max-height: 20px;
   z-index: 5;
 }
 #rabbit .head .mouth .tongue {
