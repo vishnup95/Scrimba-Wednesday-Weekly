@@ -1,0 +1,46 @@
+$base-value: 14;
+$border-top: #fa5246;
+$pure-white: #fff;
+
+@font-face {
+    font-family: 'Koho Semi Bold';
+    src: url('./assets/fonts/KoHo-SemiBold.ttf') format('truetype');
+}
+
+
+@mixin fontSize($size: 14) {
+    font-size: #{$size}vmin;
+}
+
+.d-flex {
+    display: flex;
+}
+
+@mixin center-at-all-cost {
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin padding(
+	$firstValue,
+	$secondValue: '',
+	$thirdValue: '',
+	$fourthValue: ''
+) {
+	@if $fourthValue != '' {
+		padding: $firstValue +
+			px
+			$secondValue +
+			px
+			$thirdValue +
+			px
+			$fourthValue +
+			px;
+	} @else if $thirdValue != '' {
+		padding: $firstValue + px $secondValue + px $thirdValue + px;
+	} @else if $secondValue != '' {
+		padding: $firstValue + px $secondValue + px;
+	} @else if $firstValue {
+		padding: $firstValue + px;
+	}
+}
