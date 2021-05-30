@@ -1,0 +1,268 @@
+@use "sass:color";
+@use "sass:map";
+@use './media' as media;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap");
+
+// conversion factor
+$conversion-factor: 20;
+$primary-font-family: "Poppins", sans-serif;
+$nav-font-family: "Londrina Solid", cursive;
+
+// Variables for theme
+$light-bg: #faf1e6;
+$light-text: #181818;
+$light-nav-bar: #e4efe7;
+
+$dark-bg: #064420;
+$dark-text: #fdfaf6;
+
+@mixin light() {
+  @media (prefers-color-scheme: light) {
+    @at-root #{selector-nest(':root:not([data-theme=light]):not([data-theme=dark])', &)} {
+      @content;
+    }
+  }
+  @at-root #{selector-nest(':root[data-theme=light]', &)} {
+    @content;
+  }
+}
+
+@mixin dark() {
+  @media (prefers-color-scheme: dark) {
+    @at-root #{selector-nest(':root:not([data-theme=light]):not([data-theme=dark])', &)} {
+      @content;
+    }
+  }
+  @at-root #{selector-nest(':root[data-theme=dark]', &)} {
+    @content;
+  }
+}
+
+@mixin font-size($size) {
+  font-size: $size/$conversion-factor + rem;
+}
+
+@mixin flex-w-direction($direction: "") {
+  @if $direction == "" {
+    display: flex;
+    flex-direction: row;
+  } @else {
+    display: flex;
+    flex-direction: $direction;
+  }
+}
+
+// Mixin from a gist.
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -moz-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -moz-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -moz-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  justify-content: $value;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+// Checkbox styles..
+.toggle {
+  position: relative;
+  @include flex-w-direction();
+  @include justify-content(flex-start);
+
+  input[type="checkbox"] {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    width: 5px;
+    height: 5px;
+    white-space: nowrap;
+    & + label {
+      display: block;
+      position: relative;
+      padding: 0.5em;
+      padding-left: 4em;
+      max-width: calc(100% - 2em);
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        height: 1.5em;
+        transition: all 0.25s ease;
+
+        @media screen and (prefers-reduced-motion: reduce) {
+          transition: none;
+        }
+      }
+
+      &::before {
+        left: 0;
+        top: 0.2em;
+        width: 3em;
+        border: 0.2em solid #767676;
+        background: #767676;
+        border-radius: 1.1em;
+      }
+
+      &::after {
+        left: 0;
+        top: 0.25em;
+        background-color: #fff;
+        background-position: center center;
+        border-radius: 50%;
+        width: 1.5em;
+        border: 0.15em solid #767676;
+      }
+    }
+
+    &:checked {
+      & + label {
+        &::after {
+          left: 1.5em;
+          border-color: #767676;
+        }
+      }
+    }
+  }
+}
+
+.navigation-menu {
+  background-color: $light-nav-bar;
+  @include dark() {
+    background-color: color.invert($light-nav-bar);
+    color: $dark-text;
+  }
+  padding: 1rem;
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  width: 35vmin;
+  font-family: $primary-font-family;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 1;
+
+  @include media.media-breakpoint("phone") {
+    width: 75vmin;
+  }
+
+  .nav-items {
+    list-style: none;
+    @include flex-w-direction(column);
+    @include justify-content(space-around);
+    height: 100%;
+
+    .nav-item {
+      @include font-size(30);
+      cursor: pointer;
+
+      &:hover {
+        text-shadow: 1px 1px 2px color.adjust($light-text, $red: 75);
+      }
+    }
+  }
+
+  &.active {
+    transform: translateX(0) translateZ(1px);
+  }
+}
+
+#main-content {
+  background-color: $light-bg;
+  color: $light-text;
+  position: relative;
+  @include dark() {
+    background-color: $dark-bg;
+    color: $dark-text;
+  }
+  // min-height: 100vh;
+  padding: 1rem;
+  font-family: $primary-font-family;
+
+  .header-text {
+    @include font-size(45);
+    @include media.media-breakpoint("phone") {
+      margin: 0;
+      width: calc(100% - 2em);
+    }
+  }
+
+  .burger {
+    position: absolute;
+    right: 1rem;
+    top: 15px;
+    height: 25px;
+    @include flex-w-direction(column);
+    @include justify-content(space-around);
+    cursor: pointer;
+    z-index: 2;
+
+    .lines {
+      list-style-type: none;
+      width: 25px;
+      height: 1px;
+      background-color: $light-text;
+      @include dark() {
+        background-color: $dark-text;
+      }
+      transition: all 0.75s linear;
+    }
+
+    &.active {
+      .lines {
+        &:nth-child(1) {
+          transform: translateY(10px) rotate(-45deg);
+        }
+
+        &:nth-child(3) {
+          left: -100%;
+          opacity: 0;
+        }
+
+        &:nth-child(2) {
+          transform: translateY(1px) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  &.overlay {
+    transition: 0.2s ease;
+    &::after {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      content: '';
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 1, 0.7);
+  }
+}
+}

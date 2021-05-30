@@ -1,0 +1,19 @@
+$breakpoints: (
+    phone: 'screen and (max-width: 480px)',
+    tablet: 'screen and (min-width: 480px) and (max-width: 768px)',
+    desktop: 'screen and (min-width: 768px) and (max-width: 1280px)',
+    lg: 'screen and (min-width: 1280px) and (max-width: 1440px)',
+    xl: 'screen and (min-width: 1440px) and (max-width: 2440px)'
+) !default;
+
+@mixin media-breakpoint($breakpointName) {
+    $mediaQuery: map-get($breakpoints, $breakpointName);
+
+    @if ($mediaQuery == null) {
+        @content
+    } @else {
+        @media #{$mediaQuery} {
+            @content
+        }
+    }
+}

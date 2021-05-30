@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.toggle {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+.toggle input[type=checkbox] {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  width: 5px;
+  height: 5px;
+  white-space: nowrap;
+}
+.toggle input[type=checkbox] + label {
+  display: block;
+  position: relative;
+  padding: 0.5em;
+  padding-left: 4em;
+  max-width: calc(100% - 2em);
+}
+.toggle input[type=checkbox] + label::after, .toggle input[type=checkbox] + label::before {
+  content: "";
+  position: absolute;
+  height: 1.5em;
+  transition: all 0.25s ease;
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  .toggle input[type=checkbox] + label::after, .toggle input[type=checkbox] + label::before {
+    transition: none;
+  }
+}
+.toggle input[type=checkbox] + label::before {
+  left: 0;
+  top: 0.2em;
+  width: 3em;
+  border: 0.2em solid #767676;
+  background: #767676;
+  border-radius: 1.1em;
+}
+.toggle input[type=checkbox] + label::after {
+  left: 0;
+  top: 0.25em;
+  background-color: #fff;
+  background-position: center center;
+  border-radius: 50%;
+  width: 1.5em;
+  border: 0.15em solid #767676;
+}
+.toggle input[type=checkbox]:checked + label::after {
+  left: 1.5em;
+  border-color: #767676;
+}
+
+.navigation-menu {
+  background-color: #e4efe7;
+  padding: 1rem;
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  width: 35vmin;
+  font-family: "Poppins", sans-serif;
+  transform-origin: 0% 0%;
+  transform: translate(100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  z-index: 1;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]):not([data-theme=dark]) .navigation-menu {
+    background-color: #1b1018;
+    color: #fdfaf6;
+  }
+}
+:root[data-theme=dark] .navigation-menu {
+  background-color: #1b1018;
+  color: #fdfaf6;
+}
+
+@media screen and (max-width: 480px) {
+  .navigation-menu {
+    width: 75vmin;
+  }
+}
+.navigation-menu .nav-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  height: 100%;
+}
+.navigation-menu .nav-items .nav-item {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.navigation-menu .nav-items .nav-item:hover {
+  text-shadow: 1px 1px 2px #631818;
+}
+.navigation-menu.active {
+  transform: translateX(0) translateZ(1px);
+}
+
+#main-content {
+  background-color: #faf1e6;
+  color: #181818;
+  position: relative;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]):not([data-theme=dark]) #main-content {
+    background-color: #064420;
+    color: #fdfaf6;
+  }
+}
+:root[data-theme=dark] #main-content {
+  background-color: #064420;
+  color: #fdfaf6;
+}
+
+#main-content .header-text {
+  font-size: 2.25rem;
+}
+@media screen and (max-width: 480px) {
+  #main-content .header-text {
+    margin: 0;
+    width: calc(100% - 2em);
+  }
+}
+#main-content .burger {
+  position: absolute;
+  right: 1rem;
+  top: 15px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  cursor: pointer;
+  z-index: 2;
+}
+#main-content .burger .lines {
+  list-style-type: none;
+  width: 25px;
+  height: 1px;
+  background-color: #181818;
+  transition: all 0.75s linear;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme=light]):not([data-theme=dark]) #main-content .burger .lines {
+    background-color: #fdfaf6;
+  }
+}
+:root[data-theme=dark] #main-content .burger .lines {
+  background-color: #fdfaf6;
+}
+
+#main-content .burger.active .lines:nth-child(1) {
+  transform: translateY(10px) rotate(-45deg);
+}
+#main-content .burger.active .lines:nth-child(3) {
+  left: -100%;
+  opacity: 0;
+}
+#main-content .burger.active .lines:nth-child(2) {
+  transform: translateY(1px) rotate(45deg);
+}
+#main-content.overlay {
+  transition: 0.2s ease;
+}
+#main-content.overlay::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 1, 0.7);
+}
