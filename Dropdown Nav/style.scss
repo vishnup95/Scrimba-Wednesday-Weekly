@@ -3,12 +3,10 @@
 @use './media' as media;
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap");
 
 // conversion factor
 $conversion-factor: 20;
 $primary-font-family: "Poppins", sans-serif;
-$nav-font-family: "Londrina Solid", cursive;
 
 // Variables for theme
 $light-bg: #faf1e6;
@@ -91,63 +89,55 @@ body {
 .toggle {
   position: relative;
   @include flex-w-direction();
-  @include justify-content(flex-start);
+  @include justify-content(flex-end);
 
   input[type="checkbox"] {
     position: absolute;
-    top: 10px;
-    left: 15px;
+    top: 5px;
     overflow: hidden;
+    opacity: 0;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-    width: 5px;
-    height: 5px;
     white-space: nowrap;
-    & + label {
-      display: block;
-      position: relative;
-      padding: 0.5em;
-      padding-left: 4em;
-      max-width: calc(100% - 2em);
-
-      &::after,
-      &::before {
-        content: "";
-        position: absolute;
-        height: 1.5em;
-        transition: all 0.25s ease;
-
-        @media screen and (prefers-reduced-motion: reduce) {
-          transition: none;
-        }
-      }
-
-      &::before {
-        left: 0;
-        top: 0.2em;
-        width: 3em;
-        border: 0.2em solid #767676;
-        background: #767676;
-        border-radius: 1.1em;
-      }
-
-      &::after {
-        left: 0;
-        top: 0.25em;
-        background-color: #fff;
-        background-position: center center;
-        border-radius: 50%;
-        width: 1.5em;
-        border: 0.15em solid #767676;
-      }
-    }
+    background: transparent;
+    width: 65px;
+    z-index: 10;
+    cursor: pointer;
 
     &:checked {
-      & + label {
-        &::after {
-          left: 1.5em;
-          border-color: #767676;
+      ~.emoji-toggle {
+        &::before {
+          content: '🌚';     
+          right: -0.25em;
         }
       }
+    }
+  }
+
+  .emoji-toggle {
+    &::before {
+      content: '🌞';
+      position: absolute;
+      right: 2rem;
+      @include font-size(35);
+      margin-top: -7.5px;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+  }
+
+  .label-toggle {
+    display: block;
+    background-color: #eee;
+    height: 25px;
+    border-radius: 15px;
+    width: 60px;
+    right: 1rem;
+    cursor: pointer;
+
+    &::before {
+      position: absolute;
+      content: "Mode";
+      right: 4rem;
     }
   }
 }
@@ -259,10 +249,10 @@ body {
       position: absolute;
       width: 100%;
       height: 100%;
-      content: '';
+      content: "";
       top: 0;
       left: 0;
       background-color: rgba(0, 0, 1, 0.7);
+    }
   }
-}
 }
